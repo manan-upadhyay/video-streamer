@@ -1,9 +1,11 @@
-function App() {
+import Router from './Router';
+
+const App = () => {
   return (
     <div className='App'>
-      <p className='text-center'>Welcome to the app!</p>
+      <Router />
     </div>
   );
-}
+};
 
 export default App;
