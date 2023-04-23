@@ -14,7 +14,7 @@ const CardSection = () => {
       <Container maxWidth="lg">
         <div className="p-5">
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <SubscriptionsIcon
@@ -25,7 +25,7 @@ const CardSection = () => {
                 title="Title 1"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <PieChartIcon style={{ color: "#fff" }} fontSize="large" />
@@ -33,7 +33,7 @@ const CardSection = () => {
                 title="Title 2"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <FavoriteIcon style={{ color: "#fff" }} fontSize="large" />
@@ -41,7 +41,7 @@ const CardSection = () => {
                 title="Title 3"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <LocalMallIcon style={{ color: "#fff" }} fontSize="large" />
@@ -49,7 +49,7 @@ const CardSection = () => {
                 title="Title 4"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <FolderCopyIcon style={{ color: "#fff" }} fontSize="large" />
@@ -57,7 +57,7 @@ const CardSection = () => {
                 title="Title 5"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <FolderCopyIcon style={{ color: "#fff" }} fontSize="large" />
@@ -65,7 +65,7 @@ const CardSection = () => {
                 title="Title 6"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <FolderCopyIcon style={{ color: "#fff" }} fontSize="large" />
@@ -73,7 +73,7 @@ const CardSection = () => {
                 title="Title 7"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
                   <FolderCopyIcon style={{ color: "#fff" }} fontSize="large" />

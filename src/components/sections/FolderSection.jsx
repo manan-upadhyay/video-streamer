@@ -1,83 +1,30 @@
 import { Container, Grid } from "@mui/material";
 import React from "react";
 import CardWithIcon from "../CardWithIcon";
+// import image from "../assets/images/folderBG.avif";
 
-const FolderSection = () => {
+const FolderSection = ({ section }) => {
+  const { title, folders } = section;
+
   return (
     <Container maxWidth="lg">
-      <div className="card-section">
-        <h1 className="pb-10 tracking-[1px]">Section Title</h1>
+      <div className="py-10 text-2xl sm:text-4xl px-14">
+        <h1 className="pb-10 tracking-[1px]">{title}</h1>
         <Grid sx={{ flexGrow: 1 }} container spacing={4}>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
-          <Grid item xs={2.4}>
-            <CardWithIcon
-              showActions={true}
-              contentPadding="16px 14px 30px 14px"
-              showMedia={true}
-              cardRadius="0px"
-              isFolderCard={true}
-              title="This is a dummy text"
-            />
-          </Grid>
+          {folders.map((folder, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={2.4}>
+              <CardWithIcon
+                id={index + 1}
+                folder={folder}
+                title={folder.title}
+                showActions={true}
+                showMedia={true}
+                isFolderCard={true}
+                cardRadius="0px"
+                contentPadding="16px 14px 30px 14px"
+              />
+            </Grid>
+          ))}
         </Grid>
       </div>
     </Container>

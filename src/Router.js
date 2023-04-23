@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
-import FolderDetail from "./pages/FolderDetail";
+import FolderDetails from "./pages/FolderDetails";
 
 // Import required components
 import Header from "./common/Header";
@@ -15,7 +15,7 @@ const Router = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<FolderDetail />} />
+        <Route path="/:folderId" element={<FolderDetails />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

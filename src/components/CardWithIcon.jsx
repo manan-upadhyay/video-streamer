@@ -1,19 +1,29 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { Button, CardActions, CardMedia, Typography } from "@mui/material";
+import { Button, CardActions, CardMedia } from "@mui/material";
 import image from "../assets/images/folderBG.avif";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useNavigate } from "react-router-dom";
 
 const CardWithIcon = ({
-  icon,
+  id,
+  folder,
   title,
+  icon,
   cardRadius = "2px",
   contentPadding,
   isFolderCard = false,
   showActions = false,
   showMedia = false,
 }) => {
+  const navigate = useNavigate();
+  const imgUrl = folder?.thumbnail;
+  console.log("imgUrl", imgUrl);
+  const handleClick = () => {
+    navigate(`/${id}`, { state: { currentFolder: folder } });
+  };
+
   return (
     <Card
       sx={{
@@ -26,7 +36,7 @@ const CardWithIcon = ({
           component="img"
           alt="green iguana"
           height="140"
-          image={image}
+          image={imgUrl}
         />
       )}
       <CardContent
@@ -34,37 +44,21 @@ const CardWithIcon = ({
         className="flex-center flex-col gap-5 text-center"
       >
         {icon}
-        <Typography
-          sx={
-            isFolderCard
-              ? {
-                  "&.MuiTypography-root": {
-                    color: "#293763",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                  },
-                }
-              : {
-                  "&.MuiTypography-root": {
-                    color: "#deaf14",
-                  },
-                }
+        <p
+          className={
+            isFolderCard ? "text-theme text-sm font-semibold" : "text-yellow"
           }
         >
           {title}
-        </Typography>
+        </p>
       </CardContent>
       {showActions && (
-        <CardActions className="btn">
+        <CardActions className="flex-center bg-theme">
           <Button
-            sx={{
-              "&.MuiButtonBase-root": {
-                color: "white",
-                lineHeight: 0,
-              },
-            }}
-            className="flex-cente"
+            disableTouchRipple
+            className="flex-center text-white leading-none"
             size="small"
+            onClick={handleClick}
           >
             <span>View</span>
             <KeyboardArrowRightIcon />
