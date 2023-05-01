@@ -8,11 +8,8 @@ const folderSchema = new Schema(
       type: String,
       required: [true, "Folder title is required"],
     },
-    videos: [
-      {
-        video: { type: Object, required: true },
-      },
-    ],
+    videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
+    sectionId: { type: Schema.Types.ObjectId, ref: "Section", required: true },
   },
   { timestamps: true }
 );

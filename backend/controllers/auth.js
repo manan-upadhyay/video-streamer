@@ -52,6 +52,7 @@ exports.postSignup = async (req, res, next) => {
   }
 };
 
+//do login
 exports.postLogin = async (req, res, next) => {
   // Check for validation errors
   const errors = validationResult(req);
