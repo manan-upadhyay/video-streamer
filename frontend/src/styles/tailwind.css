@@ -20,7 +20,7 @@ body {
 }
 
 .custom-input textarea {
-  @apply p-2 border-2 border-theme focus:outline-none;
+  @apply p-2 border-2 border-theme-primary-300 focus:outline-none;
 }
 
 /************ Styles ************/
@@ -29,5 +29,6 @@ body {
 }
 
 .slider {
-  @apply bg-slate-500 h-36 p-5 text-center text-white;
+  @apply bg-theme-light p-5 flex items-center justify-center text-theme-primary-300;
+
 }

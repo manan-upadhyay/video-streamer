@@ -6,7 +6,7 @@
     "backend": "cd backend && npm start",
     "frontend": "cd frontend && npm start",
     "start": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "install-all": "concurrently \"npm install\" \"cd backend && npm install\" \"cd frontend && npm install\""
+    "install-all": "npm install && concurrently \"cd backend && npm install\" \"cd frontend && npm install\""
   },
   "dependencies": {
     "concurrently": "^6.4.0"
