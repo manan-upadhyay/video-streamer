@@ -2,12 +2,11 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, CardActions, CardMedia } from "@mui/material";
-import image from "../assets/images/folderBG.avif";
+import placeHolder from "../assets/images/folderBG.jpg";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useNavigate } from "react-router-dom";
 
 const CardWithIcon = ({
-  id,
   folder,
   title,
   icon,
@@ -18,10 +17,10 @@ const CardWithIcon = ({
   showMedia = false,
 }) => {
   const navigate = useNavigate();
-  const imgUrl = folder?.thumbnail;
-  console.log("imgUrl", imgUrl);
+  const imgUrl = folder?.thumbnail ?? placeHolder;
+
   const handleClick = () => {
-    navigate(`/${id}`, { state: { currentFolder: folder } });
+    navigate(`/${folder?._id}`, { state: { currentFolder: folder } });
   };
 
   return (
@@ -41,7 +40,7 @@ const CardWithIcon = ({
       )}
       <CardContent
         sx={{ padding: contentPadding }}
-        className="flex-center flex-col gap-5 text-center"
+        className="flex-col gap-5 text-center flex-center"
       >
         {icon}
         <p
@@ -56,7 +55,7 @@ const CardWithIcon = ({
         <CardActions className="flex-center bg-theme">
           <Button
             disableTouchRipple
-            className="flex-center text-white leading-none"
+            className="leading-none text-white flex-center"
             size="small"
             onClick={handleClick}
           >

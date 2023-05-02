@@ -10,7 +10,7 @@ exports.postAddSection = async (req, res, next) => {
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ message: errors.array()?.[0].msg });
   }
 
   try {
@@ -29,12 +29,12 @@ exports.postAddSection = async (req, res, next) => {
 
 // add new folder
 exports.postAddFolder = async (req, res, next) => {
-  const { title, sectionId } = req.body;
+  const { title, thumbnail, sectionId } = req.body;
 
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ message: errors.array()?.[0].msg });
   }
 
   try {
@@ -45,7 +45,7 @@ exports.postAddFolder = async (req, res, next) => {
       return res.status(400).json({ message: "Section does not exists" });
     }
     //creating a folder to DB
-    const folder = new Folder({ title, sectionId });
+    const folder = new Folder({ title, thumbnail, sectionId });
     await folder.save();
 
     // Add the new folder to the corresponding section
@@ -69,7 +69,7 @@ exports.postAddVideo = async (req, res, next) => {
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ message: errors.array()?.[0].msg });
   }
 
   try {

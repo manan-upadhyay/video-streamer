@@ -17,7 +17,9 @@ router.post(
 // @access  Private
 router.post(
   "/folders",
-  [check("title", "title is required").notEmpty()],
+  [check("title", "Title is required").notEmpty()],
+  [check("thumbnail", "Thumbnail is required").notEmpty()],
+
   adminController.postAddFolder
 );
 

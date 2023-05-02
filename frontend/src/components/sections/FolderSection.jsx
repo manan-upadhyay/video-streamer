@@ -11,20 +11,25 @@ const FolderSection = ({ section }) => {
       <div className="py-10 text-2xl sm:text-4xl px-14">
         <h1 className="pb-10 tracking-[1px]">{title}</h1>
         <Grid sx={{ flexGrow: 1 }} container spacing={4}>
-          {folders.map((folder, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={2.4}>
-              <CardWithIcon
-                id={index + 1}
-                folder={folder}
-                title={folder.title}
-                showActions={true}
-                showMedia={true}
-                isFolderCard={true}
-                cardRadius="0px"
-                contentPadding="16px 14px 30px 14px"
-              />
-            </Grid>
-          ))}
+          {folders?.length <= 0 ? (
+            <h5 className="text-sm px-9">No Data to Show</h5>
+          ) : (
+            <>
+              {folders?.map((folder) => (
+                <Grid key={folder?._id} item xs={12} sm={6} md={4} lg={2.4}>
+                  <CardWithIcon
+                    folder={folder}
+                    title={folder.title}
+                    showActions={true}
+                    showMedia={true}
+                    isFolderCard={true}
+                    cardRadius="0px"
+                    contentPadding="16px 14px 30px 14px"
+                  />
+                </Grid>
+              ))}
+            </>
+          )}
         </Grid>
       </div>
     </Container>

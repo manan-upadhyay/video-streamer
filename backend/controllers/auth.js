@@ -20,7 +20,7 @@ exports.postSignup = async (req, res, next) => {
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ message: errors.array()?.[0].msg });
   }
 
   const { firstName, lastName, email, password, role } = req.body;
@@ -57,7 +57,7 @@ exports.postLogin = async (req, res, next) => {
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ message: errors.array()?.[0].msg });
   }
 
   const { email, password } = req.body;

@@ -20,8 +20,8 @@ module.exports = {
       colors: {
         transparent: "transparent",
         theme: "#293763",
+        danger: "#EF4444",
         disable: "#5F5A45",
-        yellow: "#deaf14",
       },
     },
     container: {

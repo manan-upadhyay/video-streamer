@@ -8,6 +8,10 @@ const folderSchema = new Schema(
       type: String,
       required: [true, "Folder title is required"],
     },
+    thumbnail: {
+      type: String,
+      required: [true, "Thumbnail is required"],
+    },
     videos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
     sectionId: { type: Schema.Types.ObjectId, ref: "Section", required: true },
   },

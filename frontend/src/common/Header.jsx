@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+  const { logout, isAuth } = authContext;
   const [greeting, setGreeting] = useState("");
 
   useEffect(() => {
@@ -20,8 +24,8 @@ const Header = () => {
   }, []);
 
   // handle logout actions
-  const handleLogout = () => {
-    console.log("Logged out successfully!");
+  const handleClick = () => {
+    isAuth ? logout() : navigate("/login");
   };
 
   return (
@@ -36,8 +40,11 @@ const Header = () => {
           </div>
           <div className="gap-5 flex-between">
             <h5 className="text-xl font-medium">{`${greeting} John`}</h5>
-            <p className="text-sm font-semibold" onClick={handleLogout}>
-              Sign out
+            <p
+              className="text-sm font-semibold cursor-pointer"
+              onClick={handleClick}
+            >
+              {isAuth ? "Sign out" : "login"}
             </p>
           </div>
         </div>
