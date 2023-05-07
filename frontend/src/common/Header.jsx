@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import AuthContext from '../context/AuthContext';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -21,6 +22,9 @@ const Header = () => {
   const [greeting, setGreeting] = useState('');
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+  const { logout, isAuth } = authContext;
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -53,8 +57,8 @@ const Header = () => {
   }, []);
 
   // handle logout actions
-  const handleLogout = () => {
-    console.log('Logged out successfully!');
+  const handleClick = () => {
+    isAuth ? logout() : navigate('/login');
   };
 
   return (
@@ -152,8 +156,8 @@ const Header = () => {
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              <p className="text-sm font-semibold" onClick={handleLogout}>
-                Sign out
+              <p className="text-sm font-semibold" onClick={handleClick}>
+                {isAuth ? 'Sign out' : 'login'}
               </p>
             </Box>
           </Toolbar>

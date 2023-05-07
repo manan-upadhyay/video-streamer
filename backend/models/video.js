@@ -20,6 +20,8 @@ const videoSchema = new Schema(
       type: String,
       required: [true, "Thumbnail is required"],
     },
+    sectionId: { type: Schema.Types.ObjectId, ref: "Section", required: true },
+    folderId: { type: Schema.Types.ObjectId, ref: "Folder", required: true },
   },
   { timestamps: true }
 );

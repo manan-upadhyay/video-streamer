@@ -20,7 +20,6 @@ const FolderDetail = () => {
   const { isMobile } = useIsMobile();
   const currentFolder = location.state?.currentFolder;
 
-  console.log('isMobile', isMobile);
   return (
     <>
       <div className="flex-wrap w-full gap-5 header flex-left bg-white items-center p-4">

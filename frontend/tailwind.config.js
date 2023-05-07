@@ -41,6 +41,7 @@ module.exports = {
           },
         },
         disable: '#5F5A45',
+        danger: '#EF4444',
         yellow: '#deaf14',
       },
     },

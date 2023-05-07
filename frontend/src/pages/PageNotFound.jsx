@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const PageNotFound = () => {
   return (
-    <div className='text-center mt-5'>
+    <div className="mt-5 text-center">
       <h1>Page not found.</h1>
       <p>Sorry, this path is not availabale.</p>
     </div>
