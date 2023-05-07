@@ -7,12 +7,19 @@ import PieChartIcon from '@mui/icons-material/PieChart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import CardWithIcon from '../CardWithIcon';
+import InboxIcon from '@mui/icons-material/Inbox';
+import NotesIcon from '@mui/icons-material/Notes';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import FlagIcon from '@mui/icons-material/Flag';
+import CalculateIcon from '@mui/icons-material/Calculate';
 
 const CardSection = () => {
   return (
     <div className="bg-light">
       <Container maxWidth="lg">
-        <div className="p-5">
+        <div className="py-5">
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
@@ -23,31 +30,40 @@ const CardSection = () => {
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 1"
+                title="100 ways to motivate yourself"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="Watch Videos"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
-                  <PieChartIcon
+                  <InboxIcon
                     style={{ color: '#fff' }}
                     fontSize="large"
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 2"
+                title="Your inbox"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="View Files"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
-                  <FavoriteIcon
+                  <NotesIcon
                     style={{ color: '#fff' }}
                     fontSize="large"
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 3"
+                title="Your notes"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="View Notes"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -59,55 +75,69 @@ const CardSection = () => {
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 4"
+                title="Free tools and resources"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="Downloads"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
-                  <FolderCopyIcon
+                  <FormatQuoteIcon
                     style={{ color: '#fff' }}
                     fontSize="large"
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 5"
+                title="Motivational quotes"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="View Quotes"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
-                  <FolderCopyIcon
+                  <EmojiEventsIcon
                     style={{ color: '#fff' }}
                     fontSize="large"
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 6"
+                title="Achievements"
+                showActions={false}
+                contentPadding={'0'}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
-                  <FolderCopyIcon
+                  <FlagIcon
                     style={{ color: '#fff' }}
                     fontSize="large"
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 7"
+                title="Setting Goals"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="Download Goal Sheets"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <CardWithIcon
                 icon={
-                  <FolderCopyIcon
+                  <CalculateIcon
                     style={{ color: '#fff' }}
                     fontSize="large"
                     className="text-theme-primary-300"
                   />
                 }
-                title="Title 8"
+                title="Pricing Job Calculator"
+                showActions={true}
+                contentPadding={'0'}
+                actionTitle="Download"
               />
             </Grid>
           </Grid>

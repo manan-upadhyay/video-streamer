@@ -20,7 +20,7 @@ body {
 }
 
 .custom-input textarea {
-  @apply p-2 border-2 border-theme-primary-300 focus:outline-none;
+  @apply block p-2.5 w-full text-sm text-theme-primary-300 bg-white rounded-md border border-theme-primary-200 focus:border-theme-primary-300 resize-none h-full;
 }
 
 /************ Styles ************/

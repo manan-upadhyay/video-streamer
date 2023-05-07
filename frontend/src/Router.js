@@ -1,13 +1,13 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Home from "./pages/Home";
-import PageNotFound from "./pages/PageNotFound";
-import FolderDetails from "./pages/FolderDetails";
+import Home from './pages/Home';
+import PageNotFound from './pages/PageNotFound';
+import FolderDetails from './pages/FolderDetails';
 
 // Import required components
-import Header from "./common/Header";
-import Footer from "./common/Footer";
+import Header from './common/Header';
+import Footer from './common/Footer';
 
 const Router = () => {
   return (
@@ -18,7 +18,7 @@ const Router = () => {
         <Route path="/:folderId" element={<FolderDetails />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };

@@ -19,7 +19,7 @@ const FolderSection = ({ section }) => {
                 id={index + 1}
                 folder={folder}
                 title={folder.title}
-                showActions={true}
+                // showActions={true}
                 showMedia={true}
                 isFolderCard={true}
                 cardRadius="5px"

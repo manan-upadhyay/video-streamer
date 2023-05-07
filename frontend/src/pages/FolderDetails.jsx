@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { Box, Container, Grid } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+} from '@mui/material';
 import ReactPlayer from 'react-player'; //
 import { useIsMobile } from '../hooks/withIsMobile';
 import CardWithIcon from '../components/CardWithIcon';
@@ -37,49 +45,122 @@ const FolderDetail = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 bg-theme-light w-[100%] xs:flex-row flex-center py-8 px-4 md:px-0">
-        <div className="">
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-            width={isMobile ? 270 : 600}
-            height={isMobile ? 185 : 350}
-          />
-        </div>
-        <div className="custom-input">
-          <textarea
-            name="notepad"
-            cols="70"
-            rows="8"
-            placeholder="Type here to take notes..."
-            className="block p-2.5 w-full text-sm text-theme-primary-300 bg-white rounded-md border border-theme-primary-200 focus:border-theme-primary-300 resize-none"
-          ></textarea>
-        </div>
-      </div>
+      <Box className="bg-theme-light text-theme-primary-300 py-8">
+        <Container>
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={8}>
+              <ReactPlayer
+                url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                // width={isMobile ? 270 : 600}
+                // height={isMobile ? 185 : 350}
+                width={'100%'}
+              />
+            </Grid>
 
-      <Container>
-        <Box
-          sx={{
-            py: '30px',
-          }}
-        >
-          <Grid sx={{ flexGrow: 1 }} container spacing={4}>
-            {FOLDER_DATA.videos.map((folder, index) => (
-              <Grid item xs={12} sm={6} md={4} lg={2.4}>
-                <CardWithIcon
-                  id={index + 1}
-                  folder={folder}
-                  title={folder.title}
-                  showActions={true}
-                  showMedia={true}
-                  isFolderCard={true}
-                  cardRadius="5px"
-                  contentPadding="24px"
-                />
-              </Grid>
-            ))}
+            <Grid item xs={12} sm={4}>
+              <div className="custom-input h-full">
+                <textarea
+                  name="notepad"
+                  placeholder="Type here to take notes..."
+                  className=""
+                ></textarea>
+              </div>
+            </Grid>
           </Grid>
-        </Box>
-      </Container>
+        </Container>
+      </Box>
+
+      <Box className="py-8">
+        <Container>
+          <Grid sx={{ flexGrow: 1 }} container spacing={4}>
+            <Grid item xs={12} sm={8}>
+              <Grid sx={{ flexGrow: 1 }} container spacing={4}>
+                {FOLDER_DATA.videos.map((folder, index) => (
+                  <Grid item xs={12} sm={6} md={4}>
+                    <CardWithIcon
+                      id={index + 1}
+                      folder={folder}
+                      title={folder.title}
+                      showMedia={true}
+                      isFolderCard={true}
+                      cardRadius="5px"
+                      contentPadding="24px"
+                    />
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Card sx={{ minWidth: 275 }} className="bg-theme-primary-200">
+                <CardContent>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    className="text-white font-bold"
+                  >
+                    Title
+                  </Typography>
+                  <Typography sx={{ mb: 3 }} className="text-white">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </Typography>
+
+                  <Grid sx={{ flexGrow: 1 }} container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <Button
+                        variant="contained"
+                        className="bg-theme-light text-theme-primary-300 w-full"
+                      >
+                        Contained
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Button
+                        variant="contained"
+                        className="bg-theme-light text-theme-primary-300 w-full"
+                      >
+                        Contained
+                      </Button>
+                    </Grid>{' '}
+                    <Grid item xs={12} sm={6}>
+                      <Button
+                        variant="contained"
+                        className="bg-theme-light text-theme-primary-300 w-full"
+                      >
+                        Contained
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Button
+                        variant="contained"
+                        className="bg-theme-light text-theme-primary-300 w-full"
+                      >
+                        Contained
+                      </Button>
+                    </Grid>{' '}
+                    <Grid item xs={12} sm={6}>
+                      <Button
+                        variant="contained"
+                        className="bg-theme-light text-theme-primary-300 w-full"
+                      >
+                        Contained
+                      </Button>
+                    </Grid>{' '}
+                    <Grid item xs={12} sm={6}>
+                      <Button
+                        variant="contained"
+                        className="bg-theme-light text-theme-primary-300 w-full"
+                      >
+                        Contained
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </>
   );
 };

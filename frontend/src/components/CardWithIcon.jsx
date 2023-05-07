@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Button, CardActions, CardMedia } from '@mui/material';
+import { Box, Button, CardActions, CardMedia } from '@mui/material';
 import image from '../assets/images/folderBG.avif';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +16,7 @@ const CardWithIcon = ({
   isFolderCard = false,
   showActions = false,
   showMedia = false,
+  actionTitle = 'View',
 }) => {
   const navigate = useNavigate();
   const imgUrl = folder?.thumbnail;
@@ -48,35 +49,37 @@ const CardWithIcon = ({
           image={imgUrl}
         />
       )}
-      <CardContent
-        sx={{ padding: contentPadding }}
-        className="flex-center flex-col gap-5 text-center"
-      >
-        {icon}
-        <p
-          className={`m-0
+      <Box>
+        <CardContent
+          sx={{ padding: contentPadding }}
+          className="flex-center flex-col gap-3 text-center"
+        >
+          <p
+            className={`m-0 font-semibold
             ${
               isFolderCard
-                ? 'text-theme-primary-200 text-sm font-semibold'
+                ? 'text-theme-primary-200 text-sm'
                 : 'text-theme-primary-300'
             }
-          `}
-        >
-          {title}
-        </p>
-      </CardContent>
-      {/* {showActions && (
-        <CardActions className="flex-center bg-theme">
-          <Button
-            disableTouchRipple
-            className="flex-center text-white leading-none"
-            size="small"
+            `}
           >
-            <span>View</span>
-            <KeyboardArrowRightIcon />
-          </Button>
-        </CardActions>
-      )} */}
+            {title}
+          </p>
+          {icon}
+        </CardContent>
+        {showActions && (
+          <CardActions className="flex-center mt-3 p-0">
+            <Button
+              disableTouchRipple
+              className="flex-center bg-theme-primary-300 text-white leading-none px-4 capitalize"
+              size="small"
+            >
+              <span>{actionTitle}</span>
+              <KeyboardArrowRightIcon fontSize="small" />
+            </Button>
+          </CardActions>
+        )}
+      </Box>
     </Card>
   );
 };
