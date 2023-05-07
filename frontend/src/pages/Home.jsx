@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Slider from '../components/Slider';
+import Slider from '../components/slider/Slider';
 import FolderSection from '../components/sections/FolderSection';
 import CardSection from '../components/sections/CardSection';
 import { fetchSections } from '../services';

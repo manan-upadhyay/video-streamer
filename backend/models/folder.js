@@ -8,6 +8,10 @@ const folderSchema = new Schema(
       type: String,
       required: [true, "Folder title is required"],
     },
+    description: {
+      type: String,
+      required: [true, "Description title is required"],
+    },
     thumbnail: {
       type: String,
       required: [true, "Thumbnail is required"],

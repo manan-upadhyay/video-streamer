@@ -8,6 +8,10 @@ const sectionSchema = new Schema(
       type: String,
       required: [true, "Section title is required"],
     },
+    description: {
+      type: String,
+      required: [true, "Description title is required"],
+    },
     folders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Folder" }],
   },
   { timestamps: true }

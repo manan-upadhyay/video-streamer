@@ -1,5 +1,3 @@
-import React from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import {
   Box,
@@ -10,15 +8,37 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import ReactPlayer from 'react-player'; //
+import { default as React, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import PlaceHolder from '../assets/images/folderBG.jpg';
+import VideoPlayer from '../components/VideoPlayer';
+import VideoCard from '../components/cards/VideoCard';
 import { useIsMobile } from '../hooks/withIsMobile';
-import CardWithIcon from '../components/CardWithIcon';
-import { FOLDER_DATA } from '../constants/folderData';
+import { fetchVideos } from '../services';
 
 const FolderDetail = () => {
   const location = useLocation();
   const { isMobile } = useIsMobile();
   const currentFolder = location.state?.currentFolder;
+
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState({});
+
+  useEffect(() => {
+    const fetchVideosData = async () => {
+      const response = await fetchVideos();
+      setVideos(response?.videos);
+    };
+    if (videos?.length <= 0) {
+      fetchVideosData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //set the first video as a current video
+  useEffect(() => {
+    setCurrentVideo(videos?.[0]);
+  }, [videos]);
 
   return (
     <>
@@ -31,15 +51,17 @@ const FolderDetail = () => {
         </Link>
         <div className="flex items-center my-auto">
           <img
-            src={currentFolder.thumbnail}
-            alt={currentFolder.title}
+            src={currentFolder?.thumbnail ?? PlaceHolder}
+            alt={currentFolder?.title}
             className="w-[200px] h-[110px] m-auto"
           />
           <div className="pt-2 pl-4 m-auto">
-            <h1 className="text-2xl text-theme-primary-300 font-bold">
-              {FOLDER_DATA.title}
+            <h1 className="text-2xl font-bold text-theme-primary-300">
+              {currentFolder?.title}
             </h1>
-            <p className="text-theme-primary-200">{FOLDER_DATA.description}</p>
+            <p className="text-theme-primary-200">
+              {currentFolder?.description}
+            </p>
           </div>
         </div>
       </div>
@@ -48,12 +70,7 @@ const FolderDetail = () => {
         <Container>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={8}>
-              <ReactPlayer
-                url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                // width={isMobile ? 270 : 600}
-                // height={isMobile ? 185 : 350}
-                width={'100%'}
-              />
+              <VideoPlayer currentVideo={currentVideo} isMobile={isMobile} />
             </Grid>
 
             <Grid item xs={12} sm={4}>
@@ -74,16 +91,16 @@ const FolderDetail = () => {
           <Grid sx={{ flexGrow: 1 }} container spacing={4}>
             <Grid item xs={12} sm={8}>
               <Grid sx={{ flexGrow: 1 }} container spacing={4}>
-                {FOLDER_DATA.videos.map((folder, index) => (
-                  <Grid item xs={12} sm={6} md={4}>
-                    <CardWithIcon
-                      id={index + 1}
-                      folder={folder}
-                      title={folder.title}
+                {videos?.map((video, index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index}>
+                    <VideoCard
+                      id={video?.id}
+                      video={video}
+                      title={video?.title}
+                      showActions={true}
                       showMedia={true}
-                      isFolderCard={true}
-                      cardRadius="5px"
-                      contentPadding="24px"
+                      setCurrentVideo={setCurrentVideo}
+                      currentVideo={currentVideo}
                     />
                   </Grid>
                 ))}

@@ -17,7 +17,7 @@ exports.getSections = async (req, res, next) => {
 //get all the folders
 exports.getFolders = async (req, res, next) => {
   try {
-    const folders = await Folder.find().populate("videos");
+    const folders = await Folder.find();
     res.json({ folders, message: "Folders retrieved successfully" });
   } catch (err) {
     const error = new Error(err);

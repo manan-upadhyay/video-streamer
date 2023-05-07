@@ -1,12 +1,12 @@
-import * as React from 'react';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Box, Button, CardActions, CardMedia } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Box, Button, CardActions, CardMedia } from '@mui/material';
-import placeHolder from '../assets/images/folderBG.jpg';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import PlaceHolder from '../../assets/images/folderBG.jpg';
 
-const CardWithIcon = ({
+const FolderCard = ({
   folder,
   title,
   icon,
@@ -18,7 +18,7 @@ const CardWithIcon = ({
   actionTitle = 'View',
 }) => {
   const navigate = useNavigate();
-  const imgUrl = folder?.thumbnail ?? placeHolder;
+  const imgUrl = folder?.thumbnail ?? PlaceHolder;
 
   const handleClick = () => {
     navigate(`/${folder?._id}`, { state: { currentFolder: folder } });
@@ -83,4 +83,4 @@ const CardWithIcon = ({
     </Card>
   );
 };
-export default CardWithIcon;
+export default FolderCard;

@@ -1,19 +1,14 @@
-import React from 'react';
-
-import { Container, Grid } from '@mui/material';
-import FolderCopyIcon from '@mui/icons-material/FolderCopy';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import PieChartIcon from '@mui/icons-material/PieChart';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
-import CardWithIcon from '../CardWithIcon';
-import InboxIcon from '@mui/icons-material/Inbox';
-import NotesIcon from '@mui/icons-material/Notes';
-import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import CalculateIcon from '@mui/icons-material/Calculate';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import FlagIcon from '@mui/icons-material/Flag';
-import CalculateIcon from '@mui/icons-material/Calculate';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import InboxIcon from '@mui/icons-material/Inbox';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+import NotesIcon from '@mui/icons-material/Notes';
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import { Container, Grid } from '@mui/material';
+import React from 'react';
+import FolderCard from '../cards/FolderCard';
 
 const CardSection = () => {
   return (
@@ -22,7 +17,7 @@ const CardSection = () => {
         <div className="py-5">
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <SubscriptionsIcon
                     fontSize="large"
@@ -37,7 +32,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <InboxIcon
                     style={{ color: '#fff' }}
@@ -52,7 +47,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <NotesIcon
                     style={{ color: '#fff' }}
@@ -67,7 +62,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <LocalMallIcon
                     style={{ color: '#fff' }}
@@ -82,7 +77,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <FormatQuoteIcon
                     style={{ color: '#fff' }}
@@ -97,7 +92,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <EmojiEventsIcon
                     style={{ color: '#fff' }}
@@ -111,7 +106,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <FlagIcon
                     style={{ color: '#fff' }}
@@ -126,7 +121,7 @@ const CardSection = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <CardWithIcon
+              <FolderCard
                 icon={
                   <CalculateIcon
                     style={{ color: '#fff' }}

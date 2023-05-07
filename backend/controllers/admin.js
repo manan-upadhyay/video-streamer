@@ -5,7 +5,7 @@ const Folder = require("../models/folder");
 
 //add new section
 exports.postAddSection = async (req, res, next) => {
-  const { title } = req.body;
+  const { title, description } = req.body;
 
   // Check for validation errors
   const errors = validationResult(req);
@@ -15,7 +15,7 @@ exports.postAddSection = async (req, res, next) => {
 
   try {
     //creating a section to DB
-    const section = new Section({ title });
+    const section = new Section({ title, description });
     await section.save();
     res
       .status(200)
@@ -29,7 +29,7 @@ exports.postAddSection = async (req, res, next) => {
 
 // add new folder
 exports.postAddFolder = async (req, res, next) => {
-  const { title, thumbnail, sectionId } = req.body;
+  const { title, thumbnail, description, sectionId } = req.body;
 
   // Check for validation errors
   const errors = validationResult(req);
@@ -45,7 +45,7 @@ exports.postAddFolder = async (req, res, next) => {
       return res.status(400).json({ message: "Section does not exists" });
     }
     //creating a folder to DB
-    const folder = new Folder({ title, thumbnail, sectionId });
+    const folder = new Folder({ title, thumbnail, description, sectionId });
     await folder.save();
 
     // Add the new folder to the corresponding section

@@ -1,5 +1,5 @@
 import React from 'react';
-import SliderCard from './SliderCard';
+import SliderCard from '../cards/SliderCard';
 import { Grid } from '@mui/material';
 
 const Slider = () => {

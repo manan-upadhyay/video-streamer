@@ -1,6 +1,6 @@
 import { Container, Grid } from '@mui/material';
 import React from 'react';
-import CardWithIcon from '../CardWithIcon';
+import FolderCard from '../cards/FolderCard';
 // import image from "../assets/images/folderBG.avif";
 
 const FolderSection = ({ section }) => {
@@ -19,7 +19,7 @@ const FolderSection = ({ section }) => {
             <>
               {folders?.map((folder) => (
                 <Grid key={folder?._id} item xs={12} sm={6} md={4} lg={2.4}>
-                  <CardWithIcon
+                  <FolderCard
                     folder={folder}
                     title={folder.title}
                     // showActions={true}
