@@ -6,31 +6,30 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 
 const Master = (props) => {
-  const [loading, setLoading] = useState(true);
-  const authContext = useContext(AuthContext);
-  const { loadUser } = authContext;
+	const [loading, setLoading] = useState(true);
+	const authContext = useContext(AuthContext);
+	const { loadUser } = authContext;
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-      loadUser();
-    }, 500);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+			loadUser();
+		}, 500);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-  return (
-    <>
-      {loading ? (
-        <h1>Loading....</h1>
-      ) : (
-        <>
-          <Header />
-          <main>{props?.children}</main>
-          <Footer />
-        </>
-      )}
-    </>
-  );
+	return (
+		<>
+			{loading ? (
+				<h1>Loading....</h1>
+			) : (
+				<>
+					<main>{props?.children}</main>
+					{/* <Footer /> */}
+				</>
+			)}
+		</>
+	);
 };
 
 export default Master;

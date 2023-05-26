@@ -18,13 +18,19 @@ const VideoPlayer = ({ currentVideo, isMobile }) => {
       {loading || !currentVideo ? (
         <Loader />
       ) : (
-        <ReactPlayer
-          url={currentVideo?.link}
-          width={isMobile ? 270 : 600}
-          height={isMobile ? 185 : 350}
-          onReady={handleReady}
-          onBuffer={handleBuffer}
-        />
+        <div className="h-fit w-[100%]">
+          <ReactPlayer
+            url={currentVideo?.link}
+            width="100%"
+            light={currentVideo?.thumbnailUrl}
+            // height={isMobile ? 185 : '100%'}
+            onReady={handleReady}
+            playing={false}
+            controls
+            onEnded={() => console.log('endeed')}
+            // onBuffer={() => handleBuffer()}
+          />
+        </div>
       )}
     </>
   );

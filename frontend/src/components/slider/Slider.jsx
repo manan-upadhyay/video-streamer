@@ -1,35 +1,31 @@
-import React from 'react';
-import SliderCard from '../cards/SliderCard';
-import { Grid } from '@mui/material';
+import React from "react";
+import SliderCard from "../cards/SliderCard";
+import { Grid } from "@mui/material";
 
 const Slider = () => {
-  const video = {
-    thumbnail: 'https://via.placeholder.com/600x400/ebebeb/969696?text=',
-    title: 'Noteworthy technology acquisitions 2021',
-    subtitle:
-      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-  };
+	const video = {
+		thumbnail: "https://via.placeholder.com/600x400/ebebeb/969696?text=",
+		title: "Noteworthy technology acquisitions 2021",
+		subtitle:
+			"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+	};
 
-  return (
-    <div className="slider">
-      <Grid
-        sx={{ flexGrow: 1 }}
-        container
-        spacing={4}
-        justifyContent={'center'}
-      >
-        <Grid item xs={12} sm={6} md={4} lg={2.4}>
-          <SliderCard video={video} className={`scale-95 `} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={2.4}>
-          <SliderCard video={video} className={``} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={2.4}>
-          <SliderCard video={video} className={`scale-95 `} />
-        </Grid>
-      </Grid>
-    </div>
-  );
+	return (
+		<div className=''>
+			<Grid
+				sx={{ flexGrow: 1 }}
+				container
+				spacing={4}
+				justifyContent={"center"}
+			>
+				<img
+					src='https://picsum.photos/1440/400'
+					alt=''
+					className='object-cover w-full h-full py-8'
+				/>
+			</Grid>
+		</div>
+	);
 };
 
 export default Slider;
