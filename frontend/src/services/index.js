@@ -27,7 +27,6 @@ export const register = async (data) => {
         icon: 'success',
       });
     }
-    console.log(res);
   } catch (err) {
     Swal.fire({
       title: 'Error',

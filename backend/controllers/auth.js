@@ -1,13 +1,13 @@
-const { validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 
 //get all the users
 exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
-    res.json({ data: users, message: "Users retrieved successfully" });
+    res.json({ data: users, message: 'Users retrieved successfully' });
   } catch (err) {
     const error = new Error(err);
     error.httpStatusCode = 500;
@@ -29,7 +29,7 @@ exports.postSignup = async (req, res, next) => {
     // Check if user already exists
     let user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({ message: 'User already exists' });
     }
 
     user = new User({
@@ -44,7 +44,7 @@ exports.postSignup = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
     await user.save();
-    res.json({ message: "User registered successfully" });
+    res.json({ message: 'User registered successfully' });
   } catch (err) {
     const error = new Error(err);
     error.httpStatusCode = 500;
@@ -66,13 +66,13 @@ exports.postLogin = async (req, res, next) => {
     // Check if user exists
     let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     // Check if password is correct
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     // Create JWT token
@@ -87,7 +87,7 @@ exports.postLogin = async (req, res, next) => {
       { expiresIn: 3600 },
       (err, token) => {
         if (err) throw err;
-        res.json({ token, message: "Logged in successfully" });
+        res.json({ user, token, message: 'Logged in successfully' });
       }
     );
   } catch (err) {

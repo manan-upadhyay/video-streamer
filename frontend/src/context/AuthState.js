@@ -1,25 +1,28 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-import AuthContext from "./AuthContext";
-import AuthReducer from "./AuthReducer";
+import AuthContext from './AuthContext';
+import AuthReducer from './AuthReducer';
 
-import { LOAD_USER, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "./types";
+import { LOAD_USER, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from './types';
 
 const AuthState = (props) => {
   const initialState = {
     isAuth: false,
     loading: true,
+    user: null,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const loadUser = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
     if (token) {
       dispatch({
         type: LOAD_USER,
+        payload: user,
       });
     }
   };
@@ -28,7 +31,7 @@ const AuthState = (props) => {
   const login = async (formData) => {
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
@@ -41,20 +44,21 @@ const AuthState = (props) => {
 
       if (res.status === 200) {
         Swal.fire({
-          title: "Success",
+          title: 'Success',
           text: res?.data?.message,
-          icon: "success",
+          icon: 'success',
         });
       }
+
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data.token,
+        payload: res.data,
       });
     } catch (err) {
       Swal.fire({
-        title: "Error",
+        title: 'Error',
         text: err?.response?.data?.message,
-        icon: "error",
+        icon: 'error',
       });
       dispatch({
         type: LOGIN_FAIL,
@@ -75,6 +79,7 @@ const AuthState = (props) => {
       value={{
         isAuth: state.isAuth,
         loading: state.loading,
+        user: state.user,
         login,
         logout,
         loadUser,

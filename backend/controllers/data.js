@@ -1,12 +1,21 @@
-const Folder = require("../models/folder");
-const Section = require("../models/section");
-const Video = require("../models/video");
+const Folder = require('../models/folder');
+const Section = require('../models/section');
+const Video = require('../models/video');
 
 //get all the sections
 exports.getSections = async (req, res, next) => {
   try {
-    const sections = await Section.find().populate("folders");
-    res.json({ sections, message: "Sections retrieved successfully" });
+    const sections = await Section.find().populate({
+      path: 'folders',
+      model: 'Folder',
+      populate: [
+        {
+          path: 'videos',
+          model: 'Video',
+        },
+      ],
+    });
+    res.json({ sections, message: 'Sections retrieved successfully' });
   } catch (err) {
     const error = new Error(err);
     error.httpStatusCode = 500;
@@ -18,7 +27,7 @@ exports.getSections = async (req, res, next) => {
 exports.getFolders = async (req, res, next) => {
   try {
     const folders = await Folder.find();
-    res.json({ folders, message: "Folders retrieved successfully" });
+    res.json({ folders, message: 'Folders retrieved successfully' });
   } catch (err) {
     const error = new Error(err);
     error.httpStatusCode = 500;
@@ -30,7 +39,7 @@ exports.getFolders = async (req, res, next) => {
 exports.getVideos = async (req, res, next) => {
   try {
     const videos = await Video.find();
-    res.json({ videos, message: "Videos retrieved successfully" });
+    res.json({ videos, message: 'Videos retrieved successfully' });
   } catch (err) {
     const error = new Error(err);
     error.httpStatusCode = 500;
