@@ -16,9 +16,11 @@ const VideoPlayer = ({ currentVideo, isMobile }) => {
   return (
     <>
       {loading || !currentVideo ? (
-        <Loader />
+        <div className="h-full w-full flex items-center justify-center">
+          <Loader />
+        </div>
       ) : (
-        <div className="h-fit w-[100%]">
+        <div className="h-fit w-full">
           <ReactPlayer
             url={currentVideo?.link}
             width="100%"

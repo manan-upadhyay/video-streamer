@@ -7,29 +7,32 @@ import { LOAD_USER, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "./types";
 import { toast } from "react-toastify";
 
 const AuthState = (props) => {
-	const initialState = {
-		isAuth: false,
-		loading: true,
-	};
+  const initialState = {
+    isAuth: false,
+    loading: true,
+    user: null,
+  };
 
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-	const loadUser = () => {
-		const token = localStorage.getItem("token");
-		if (token) {
-			dispatch({
-				type: LOAD_USER,
-			});
-		}
-	};
+  const loadUser = () => {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    if (token) {
+      dispatch({
+        type: LOAD_USER,
+        payload: user,
+      });
+    }
+  };
 
-	//login user
-	const login = async (formData) => {
-		const config = {
-			headers: {
-				"Content-Type": "application/json",
-			},
-		};
+  //login user
+  const login = async (formData) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
 		try {
 			const res = await axios.post(
@@ -61,19 +64,20 @@ const AuthState = (props) => {
 		});
 	};
 
-	return (
-		<AuthContext.Provider
-			value={{
-				isAuth: state.isAuth,
-				loading: state.loading,
-				login,
-				logout,
-				loadUser,
-			}}
-		>
-			{props.children}
-		</AuthContext.Provider>
-	);
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuth: state.isAuth,
+        loading: state.loading,
+        user: state.user,
+        login,
+        logout,
+        loadUser,
+      }}
+    >
+      {props.children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthState;
