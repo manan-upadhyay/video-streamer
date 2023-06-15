@@ -1,10 +1,10 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import AuthContext from "./AuthContext";
-import AuthReducer from "./AuthReducer";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import AuthContext from './AuthContext';
+import AuthReducer from './AuthReducer';
 
-import { LOAD_USER, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "./types";
-import { toast } from "react-toastify";
+import { LOAD_USER, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from './types';
+import { toast } from 'react-toastify';
 
 const AuthState = (props) => {
   const initialState = {
@@ -13,7 +13,7 @@ const AuthState = (props) => {
     user: null,
   };
 
-	const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const loadUser = () => {
     const token = localStorage.getItem('token');
@@ -34,35 +34,35 @@ const AuthState = (props) => {
       },
     };
 
-		try {
-			const res = await axios.post(
-				`${process.env.REACT_APP_BACKEND_URL}/auth/login`,
-				formData,
-				config
-			);
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        formData,
+        config
+      );
 
-			if (res.status === 200) {
-				toast.success(res?.data?.message);
-			}
-			dispatch({
-				type: LOGIN_SUCCESS,
-				payload: res.data.token,
-			});
-		} catch (err) {
-			toast.error(err?.response?.data?.message);
-			dispatch({
-				type: LOGIN_FAIL,
-				payload: err?.response?.data?.message,
-			});
-		}
-	};
+      if (res.status === 200) {
+        toast.success(res?.data?.message);
+      }
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data,
+      });
+    } catch (err) {
+      toast.error(err?.response?.data?.message);
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err?.response?.data?.message,
+      });
+    }
+  };
 
-	//logout
-	const logout = () => {
-		dispatch({
-			type: LOGOUT,
-		});
-	};
+  //logout
+  const logout = () => {
+    dispatch({
+      type: LOGOUT,
+    });
+  };
 
   return (
     <AuthContext.Provider
