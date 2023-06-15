@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-sm font-normal leading-4 text-black;
+  @apply text-sm font-normal leading-4 text-black bg-secondary;
 }
 
 /************ Common classes ************/
